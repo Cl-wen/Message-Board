@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>编辑留言</title>
+    <link rel="stylesheet" href="/css/edit.css">
+</head>
+<body>
+    <div class="main-container">
+        <div class="header-section">
+            <h1>编辑留言</h1>
+            <div class="user-info">
+                <a th:href="@{/message/list}" class="btn secondary-btn">取消</a>
+            </div>
+        </div>
+
+        <div class="form-box">
+            <form th:action="@{/message/edit}" th:object="${message}" method="post">
+                <input type="hidden" th:field="*{id}" />
+                <div class="input-group">
+                    <label for="content">留言内容:</label>
+                    <textarea id="content" th:field="*{content}" rows="8" required></textarea>
+                </div>
+                <div class="button-group">
+                    <button type="submit" class="btn primary-btn">保存修改</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script src="/js/edit.js"></script>
+</body>
+</html> 

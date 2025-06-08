@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>用户注册</title>
+    <link rel="stylesheet" href="/css/register.css">
+</head>
+<body>
+    <div class="welcome-text-container">
+        <h1>欢迎注册</h1>
+        <p>
+            注册您的账户，开始您的留言之旅。我们提供安全、便捷的注册服务，让您轻松访问所有功能。
+        </p>
+    </div>
+    <div class="register-container">
+        <div class="register-form-content">
+            <h2>用户注册</h2>
+            <div th:if="${error}" class="alert alert-danger" th:text="${error}"></div>
+            <form th:action="@{/register}" method="post">
+                <div class="input-group">
+                    <input type="text" id="username" name="username" placeholder="用户名" required>
+                </div>
+                <div class="input-group">
+                    <input type="password" id="password" name="password" placeholder="密码" required>
+                </div>
+                <div class="button-group">
+                    <button type="submit" class="btn primary-btn">注册</button>
+                </div>
+            </form>
+            <div class="login-link">
+                已有账号？<a th:href="@{/login}">立即登录</a>
+            </div>
+        </div>
+    </div>
+    <script src="/js/register.js"></script>
+</body>
+</html> 

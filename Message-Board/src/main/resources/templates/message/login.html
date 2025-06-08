@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>用户登录</title>
+    <link rel="stylesheet" href="/css/login.css">
+</head>
+<body>
+    <div class="welcome-text-container">
+        <h1>欢迎回来</h1>
+        <p>
+            登录您的账户，开始您的留言之旅。我们提供安全、便捷的登录服务，让您轻松访问所有功能。
+        </p>
+    </div>
+    <div class="login-container">
+        <div class="login-form-content">
+            <h2>用户登录</h2>
+            <div th:if="${param.error}" class="alert alert-danger">
+                用户名或密码错误
+            </div>
+            <div th:if="${param.registered}" class="alert alert-success">
+                注册成功，请登录
+            </div>
+            <form th:action="@{/login}" method="post">
+                <div class="input-group">
+                    <input type="text" id="username" name="username" placeholder="用户名" required>
+                </div>
+                <div class="input-group">
+                    <input type="password" id="password" name="password" placeholder="密码" required>
+                </div>
+                <div class="button-group">
+                    <button type="submit" class="btn primary-btn">登录</button>
+                </div>
+            </form>
+            <div class="register-link">
+                还没有账号？<a th:href="@{/register}">立即注册</a>
+            </div>
+        </div>
+    </div>
+    <script src="/js/login.js"></script>
+</body>
+</html> 

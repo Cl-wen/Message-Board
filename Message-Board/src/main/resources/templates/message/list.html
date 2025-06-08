@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>留言板</title>
+    <link rel="stylesheet" href="/css/list.css">
+</head>
+<body>
+    <div class="main-container">
+        <div class="header-section">
+            <h1>留言板</h1>
+            <div class="user-info">
+                <span th:if="${loggedInUser != null}">
+                    欢迎, <span th:text="${loggedInUser.username}"></span>
+                    <form th:action="@{/logout}" method="post" style="display: inline;">
+                        <button type="submit" class="btn logout-btn">退出</button>
+                    </form>
+                </span>
+                <span th:if="${loggedInUser == null}">
+                    <a th:href="@{/login}" class="btn primary-btn">登录</a>
+                    <a th:href="@{/register}" class="btn secondary-btn">注册</a>
+                </span>
+            </div>
+        </div>
+
+        <!-- 错误提示 -->
+        <div th:if="${errorMsg}" class="alert alert-danger" th:text="${errorMsg}"></div>
+
+        <!-- 添加留言按钮 -->
+        <div th:if="${loggedInUser != null}" class="add-message-section">
+            <a th:href="@{/message/add}" class="btn success-btn">添加留言</a>
+        </div>
+
+        <!-- 留言列表 -->
+        <div class="message-list-container">
+            <div th:each="message : ${messages}" class="message-item">
+                <div class="message-content-wrapper">
+                    <p class="message-content" th:text="${message.content}"></p>
+                    <small class="message-meta">
+                        发布者: <span th:text="${message.user.username}"></span> |
+                        时间: <span th:text="${#temporals.format(message.createdAt, 'yyyy-MM-dd HH:mm')}"></span>
+                    </small>
+                </div>
+                <div class="message-actions">
+                    <div th:if="${loggedInUser != null and loggedInUser.username == 'admin'}">
+                        <a th:href="@{/message/edit/{id}(id=${message.id})}" class="btn primary-btn btn-sm">编辑</a>
+                        <button class="btn danger-btn btn-sm" 
+                                th:onclick="'deleteMessage(this, ' + ${message.id} + ')'">删除</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/js/list.js"></script>
+    <script>
+    function deleteMessage(btn, id) {
+        if (confirm('确定要删除这条留言吗？')) {
+            fetch('/message/delete/' + id, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+            .then(response => response.text())
+            .then(result => {
+                if (result === 'success') {
+                    // 删除成功，移除该留言元素
+                    btn.closest('.message-item').remove();
+                } else {
+                    // 显示错误提示
+                    alert(result);
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('删除失败，请稍后重试');
+            });
+        }
+    }
+    </script>
+</body>
+</html> 

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>添加留言</title>
+    <link rel="stylesheet" href="/css/add.css">
+</head>
+<body>
+    <div class="main-container">
+        <div class="header-section">
+            <h1>添加留言</h1>
+            <div class="user-info">
+                <a th:href="@{/message/list}" class="btn secondary-btn">返回列表</a>
+            </div>
+        </div>
+
+        <div class="form-box">
+            <form th:action="@{/message/add}" method="post">
+                <div class="input-group">
+                    <label for="content">留言内容:</label>
+                    <textarea id="content" name="content" rows="8" required></textarea>
+                </div>
+                <div class="button-group">
+                    <button type="submit" class="btn primary-btn">发布留言</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script src="/js/add.js"></script>
+</body>
+</html> 

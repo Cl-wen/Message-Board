@@ -1,0 +1,11 @@
+com\example\messageboard\controller\MessageController.class
+com\example\messageboard\controller\HomeController.class
+com\example\messageboard\controller\UserController.class
+com\example\messageboard\entity\Message.class
+com\example\messageboard\service\impl\UserServiceImpl.class
+com\example\messageboard\service\UserService.class
+com\example\messageboard\service\MessageService.class
+com\example\messageboard\entity\User.class
+com\example\messageboard\MessageBoardApplication.class
+com\example\messageboard\repository\MessageRepository.class
+com\example\messageboard\repository\UserRepository.class

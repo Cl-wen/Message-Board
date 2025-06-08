@@ -1,0 +1,195 @@
+/* 全局样式 */
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #71b7e6, #9b59b6);
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Adjust alignment to flex-start */
+    min-height: 100vh;
+    margin: 0;
+    padding: 20px;
+    box-sizing: border-box; /* Ensure padding doesn't cause overflow */
+}
+
+/* 页面容器 */
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #71b7e6, #9b59b6); /* 与登录注册页面保持一致 */
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.main-container {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: 900px; /* Wider container for messages, consistent with list.css */
+    box-sizing: border-box;
+}
+
+.header-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 15px;
+}
+
+.header-section h1 {
+    color: #333;
+    margin: 0;
+    font-size: 28px;
+}
+
+.user-info {
+    font-size: 16px;
+    color: #555;
+}
+
+.form-box {
+    background-color: #f9f9f9; /* Lighter background for form box */
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 25px; /* Adjust padding for inner form box */
+    margin-top: 20px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    width: 100%;
+    max-width: 700px; /* Adjust max-width for the form itself */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.form-box h2 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.input-group {
+    margin-bottom: 20px;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 16px;
+    color: #555;
+}
+
+.input-group textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    box-sizing: border-box;
+    resize: vertical;
+    min-height: 100px; /* Adjust min-height for text area */
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.input-group textarea:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 8px rgba(0, 123, 255, 0.2);
+    outline: none;
+}
+
+.button-group {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 25px;
+}
+
+.btn {
+    padding: 8px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    text-decoration: none;
+    color: white;
+    display: inline-block; /* Ensure buttons behave correctly */
+    text-align: center;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+}
+
+.primary-btn {
+    background-color: #007bff;
+}
+
+.primary-btn:hover {
+    background-color: #0056b3;
+}
+
+.secondary-btn {
+    background-color: #6c757d;
+}
+
+.secondary-btn:hover {
+    background-color: #5a6268;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .header-section {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .user-info {
+        margin-top: 15px;
+    }
+
+    .btn {
+        padding: 6px 12px;
+        font-size: 13px;
+    }
+
+    .form-box {
+        padding: 20px;
+    }
+
+    .form-box h2 {
+        font-size: 20px;
+    }
+
+    .input-group label,
+    .input-group textarea {
+        font-size: 14px;
+    }
+
+    .button-group {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .button-group .btn {
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .main-container {
+        padding: 15px;
+    }
+
+    .header-section h1 {
+        font-size: 22px;
+    }
+
+    .form-box {
+        padding: 15px;
+    }
+} 

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>留言板管理系统</title>
+    <link rel="stylesheet" href="/css/index.css">
+</head>
+<body>
+    <div class="main-container">
+        <h1>留言板管理系统</h1>
+        <div class="form-box">
+            <form th:action="@{/messages/add}" th:object="${message}" method="post" onsubmit="return validateForm(this)">
+                <div class="input-group">
+                    <label for="author">发布者：</label>
+                    <input type="text" id="author" th:field="*{author}" required>
+                </div>
+                <div class="input-group">
+                    <label for="content">留言内容：</label>
+                    <textarea id="content" th:field="*{content}" required></textarea>
+                </div>
+                <div class="button-group">
+                    <button type="submit" class="btn primary-btn">发布留言</button>
+                </div>
+            </form>
+        </div>
+        <div class="message-list-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>发布者</th>
+                        <th>留言内容</th>
+                        <th>发布时间</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="msg : ${messages}" class="fade-in">
+                        <td th:text="${msg.author}"></td>
+                        <td th:text="${msg.content}"></td>
+                        <td th:text="${#temporals.format(msg.publishDate, 'yyyy-MM-dd HH:mm:ss')}"></td>
+                        <td>
+                            <a th:href="@{/messages/edit/{id}(id=${msg.id})}" class="btn primary-btn btn-sm">编辑</a>
+                            <a th:href="@{/messages/delete/{id}(id=${msg.id})}" class="btn danger-btn btn-sm" onclick="return confirm('确定要删除这条留言吗？')">删除</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <script src="/js/index.js"></script>
+</body>
+</html> 
